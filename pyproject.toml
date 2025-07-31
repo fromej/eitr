@@ -1,0 +1,15 @@
+[project]
+name = "eitr"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dj-database-url>=3.0.1",
+    "django>=5.2.4",
+    "django-background-tasks>=1.2.8",
+    "gunicorn>=23.0.0",
+    "openai>=1.97.1",
+    "psycopg[binary]>=3.2.9",
+    "whitenoise[brotli]>=6.9.0",
+]
