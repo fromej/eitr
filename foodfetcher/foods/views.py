@@ -8,7 +8,12 @@ from .tasks import get_favorite_foods
 def veggies(request):
     veggy_items = FavoriteFoods.objects.filter(veggy=True)
 
-    data = [{"favorite_foods": item.foods} for item in veggy_items]
+    data = [{       
+        "question": item.question,
+        "answer": item.answer,
+        "favorite_foods": item.foods, 
+        "vegitarian": item.veggy
+        } for item in veggy_items]
 
     return_data = {
         "vegitarians": data,
@@ -42,4 +47,4 @@ def schedule_favorite_foods(request):
 
     get_favorite_foods(int(amount_str) if amount_str else 100)
     
-    return JsonResponse({"scheduled": True})
+    return JsonResponse({"scheduled": True, "amount": int(amount_str)})
