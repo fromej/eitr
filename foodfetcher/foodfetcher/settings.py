@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'foodfetcher.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASE_URL = os.environ.get('POSTGRESQLCONNSTR_FOODSERVICE')
+DATABASE_URL = os.environ.get('POSTGRES_URL')
 
 DATABASES = {
     'default': dj_database_url.config(
