@@ -1,3 +1,4 @@
+import random
 from typing import List
 from background_task import background
 from openai import OpenAI
@@ -25,10 +26,12 @@ def get_favorite_foods(amount: int = 100):
             input="You are in a conversation with a true food lover. Ask him for his top three favorite foods."
         )
 
+        mood = random.choice(["vegitarian", "vegan", "meat-lover"])
+
         chat_b = openai_client.responses.create(
         model=OPENAI_MODEL,
         input=chat_a.output_text,
-        instructions="You are culinairy food lover that has a very diverse taste of foods. Randomly you feel like being fully vegan, vegitarian or a true meat lover.",
+        instructions=f"You are culinairy food lover that has a very diverse taste of foods. Today you are a {mood}.",
         temperature=1.3,
         )
 
@@ -44,7 +47,7 @@ def get_favorite_foods(amount: int = 100):
             chat_b.output_text, 
             post_processing.output_parsed
             ))
-        print(f"{n + 1}/{amount}")
+        print(f"{n + 1}/{amount} for {mood}")
 
     food_responses = [
         FavoriteFoods(
