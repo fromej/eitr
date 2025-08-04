@@ -34,6 +34,8 @@ hostname = os.environ.get('WEBSITE_HOSTNAME')
 if hostname:
     ALLOWED_HOSTS.append(hostname)
 
+    CSRF_TRUSTED_ORIGINS = [f"https://{hostname}",]
+
 
 # Application definition
 
