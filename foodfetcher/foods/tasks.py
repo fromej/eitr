@@ -22,13 +22,13 @@ def get_favorite_foods(amount: int = 100):
     for _ in range(amount):
         chat_a = openai_client.responses.create(
             model=OPENAI_MODEL,
-            input="You are in a conversation with another user. Ask him for their top three favorite foods."
+            input="You are in a conversation with a true food lover. Ask him for his top three favorite foods."
         )
 
         chat_b = openai_client.responses.create(
         model=OPENAI_MODEL,
         input=chat_a.output_text,
-        instructions="You are human and in a conversation with another user. Please anwer the question",
+        instructions="You are culinairy food lover that has a very diverse taste of foods. Randomly you feel like being vegan or vegitarian or a true meat lover.",
         temperature=1.3,
         )
 
