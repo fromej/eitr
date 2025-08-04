@@ -15,8 +15,9 @@ COPY foodfetcher .
 
 RUN .venv/bin/python manage.py collectstatic --noinput
 
-RUN .venv/bin/python manage.py migrate
-
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY entrypoint.sh /entrypoint.sh
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
